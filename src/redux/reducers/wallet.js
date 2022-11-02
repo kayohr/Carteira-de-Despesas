@@ -1,4 +1,4 @@
-import { RESPONSE_ECONOMY_SUCCESS } from '../actions';
+import { RESPONSE_ECONOMY_SUCCESS, RESPONSE_EXPENSE_SUCCESS } from '../actions';
 
 const INITIAL_STATE = {
 
@@ -16,11 +16,15 @@ const walletReducer = (state = INITIAL_STATE, action) => {
       ...state,
       currencies: Object.keys(action.wallet).filter((element) => element !== 'USDT'),
     };
-    // case ADD_WALLET:
-    //   return {
-    //     ...state,
-    //     currencies: action.currencies,
-    //   };
+  case RESPONSE_EXPENSE_SUCCESS:
+    return {
+      ...state,
+      expenses: [
+        ...state.expenses,
+        action.wallet,
+      ],
+      idToEdit: state.idToEdit + 1,
+    };
     // case REQUEST_ECONOMY:
     //   return {
     //     ...state,
