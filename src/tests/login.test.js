@@ -9,10 +9,15 @@ import { renderWithRouter, renderWithRouterAndRedux } from './helpers/renderWith
 
 describe('', () => {
   test('1- testar rota e botão desabilitado', () => {
-    renderWithRouterAndRedux(<App />, ['/']);
-
-    // const btnValidete = screen.getByRole('button', { name: '/entrar/i' });
-    // expect(btnValidete).toBeDisabled();
+    const { history } = renderWithRouterAndRedux(<App />, ['/']);
+    const login = screen.getByPlaceholderText(/email/i);
+    const password = screen.getByPlaceholderText(/password/i);
+    const btnValidete = screen.getByRole('button', { name: 'Entrar' });
+    userEvent.type(login, 'email@email.com');
+    userEvent.type(password, '123456');
+    expect(btnValidete).toBeEnabled();
+    userEvent.click(btnValidete);
+    expect(history.location.pathname).toBe('/carteira');
   });
 
   test('2- login e email', () => {
@@ -24,15 +29,15 @@ describe('', () => {
     );
     const login = screen.getByPlaceholderText(/email/i);
     const password = screen.getByPlaceholderText(/password/i);
-    // const btnValidete = screen.getByRole('button', { name: '/entrar/i' });
-    // expect(btnValidete).toBeDisabled();
+    const btnValidete = screen.getByRole('button', { name: 'Entrar' });
+    expect(btnValidete).toBeDisabled();
 
     expect(login).toBeInTheDocument();
     expect(password).toBeInTheDocument();
     // expect(btnValidete).toBeDisabled(login === '' && password === '');
     // expect(btnValidete).toBeInTheDocument(login && password);
 
-    userEvent.type(login, /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i);
+    userEvent.type(login, 'email@test.com');
     userEvent.type(password, '/password/i');
   });
   test('3- testar rota para carteira', () => {
@@ -51,7 +56,7 @@ describe('', () => {
       </Provider>,
     );
     const login = screen.getByRole('textbox');
-    userEvent.type(login, { name: /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i });
+    userEvent.type(login, 'test@test.com');
     const password = screen.getByRole('textbox');
     userEvent.type(password, '/password/i');
     const btnValidete = screen.getByRole('button');

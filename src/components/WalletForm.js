@@ -19,8 +19,8 @@ class WalletForm extends Component {
   }
 
   handleChange = (event) => {
-    const { name, type, checked } = event.target;
-    const value = type === 'checkbox' ? checked : event.target.value;
+    const { name, value } = event.target;
+
     this.setState({
       [name]: value,
     });
