@@ -18,16 +18,6 @@ class Header extends Component {
     return parseFloat(calculoExchange).toFixed(2);
   };
 
-  // ddd = () => {
-  //   const { sumTotal } = this.props;
-  //   const calc = sumTotal.reduce((acc, curr) => {
-  //     const valueTaxa = curr.exchangeRates[curr.currency].ask;
-  //     acc += Number(valueTaxa * curr.value);
-  //     return acc;
-  //   }, 0);
-  //   return calc.toFixed(2);
-  // };
-
   render() {
     const { email } = this.props;
     return (
@@ -57,7 +47,7 @@ Header.propTypes = {
   email: PropTypes.string.isRequired,
   // expenses: PropTypes.arrayOf(PropTypes.string).isRequired,
   // dispatch: PropTypes.func.isRequired,
-  sumTotal: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sumTotal: PropTypes.arrayOf(Object).isRequired,
 };
 const mapStateToProps = (action) => ({
   email: action.user.email,
