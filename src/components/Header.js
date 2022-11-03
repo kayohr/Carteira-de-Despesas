@@ -12,10 +12,10 @@ class Header extends Component {
     const { sumTotal } = this.props;
     const calculoExchange = sumTotal.reduce((acc, curr) => {
       const valueCambio = curr.exchangeRates[curr.currency].ask;
-      acc += Number(valueCambio * curr.value);
+      acc += valueCambio * curr.value;
       return acc;
     }, 0);
-    return calculoExchange.toFixed(2);
+    return parseFloat(calculoExchange).toFixed(2);
   };
 
   // ddd = () => {
