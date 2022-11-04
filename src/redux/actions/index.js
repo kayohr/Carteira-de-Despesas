@@ -2,6 +2,7 @@ import getEconomy from '../services/API';
 
 export const ADD_USER = 'ADD_USER';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 export const REQUEST_ECONOMY = 'REQUEST_ECONOMY';
 export const RESPONSE_ECONOMY_SUCCESS = 'RESPONSE_ECONOMY_SUCCESS';
 export const RESPONSE_ECONOMY_ERROR = 'RESPONSE_ECONOMY_ERROR';
@@ -16,6 +17,10 @@ export const addUser = (email) => ({
 export const addExpense = (wallet) => ({
   type: ADD_EXPENSE,
   wallet,
+});
+export const removeExpense = (delet) => ({
+  type: REMOVE_EXPENSE,
+  delet,
 });
 
 // action creator

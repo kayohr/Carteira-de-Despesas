@@ -1,4 +1,7 @@
-import { RESPONSE_ECONOMY_SUCCESS, RESPONSE_EXPENSE_SUCCESS } from '../actions';
+import {
+  REMOVE_EXPENSE, RESPONSE_ECONOMY_SUCCESS,
+  RESPONSE_EXPENSE_SUCCESS,
+} from '../actions';
 
 const INITIAL_STATE = {
 
@@ -25,10 +28,11 @@ const walletReducer = (state = INITIAL_STATE, action) => {
       ],
       idToEdit: state.idToEdit + 1,
     };
-    // case REQUEST_ECONOMY:
-    //   return {
-    //     ...state,
-    //   };
+  case REMOVE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.filter((element) => element.id !== action.delet),
+    };
     // case RESPONSE_ECONOMY_ERROR:
     //   return {
     //     ...state,
