@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import App from '../App';
@@ -52,9 +52,19 @@ describe('', () => {
     expect(btnValidete).toBeInTheDocument();
     userEvent.click(btnValidete);
   });
-  test('7-Moedas', () => {
+  test('7-Moedas', async () => { // Ajuda da Bia e Ellen na parte do await waitFor, pois quando a 8 passou a 5 deu problema, me ajudarama complementar
     renderWithRouterAndRedux(<Wallet />);
-    const idCurrency = screen.getByTestId('currency-input');
-    expect(idCurrency).toBeInTheDocument();
+    const coin = screen.getByTestId('currency-input');
+    const methodExpense = screen.getByTestId('method-input');
+    const tagExpense = screen.getByTestId('tag-input');
+    expect(coin).toBeInTheDocument();
+    expect(methodExpense).toBeInTheDocument();
+    expect(tagExpense).toBeInTheDocument();
+    await waitFor(() => {
+      userEvent.selectOptions(coin, 'USD');
+      userEvent.selectOptions(methodExpense, 'Dinheiro');
+      userEvent.selectOptions(tagExpense, 'Alimentação');
+      expect(screen.getByRole('button', { name: 'Adicionar despesa' })).toBeVisible();
+    });
   });
 });
