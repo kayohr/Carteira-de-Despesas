@@ -37,13 +37,17 @@ describe('', () => {
     const idDescription = screen.getByTestId('description-input');
     expect(idDescription).toBeInTheDocument();
   });
-  test('5-Verificar se tem opção de pagamento e a categoria para gastar', () => {
+  test('5-Verificar se tem opção de pagamento e a categoria para gastar', async () => {
     renderWithRouterAndRedux(<Wallet />);
 
     const methodPayment = screen.getByTestId('method-input');
     expect(methodPayment).toBeInTheDocument();
     const expenseCategory = screen.getByTestId('tag-input');
     expect(expenseCategory).toBeInTheDocument();
+    await waitFor(() => {
+      userEvent.selectOptions(methodPayment, 'Dinheiro');
+      userEvent.selectOptions(expenseCategory, 'Alimentação');
+    });
   });
 
   test('6-Verificar se tem o botao de adicionar despesas', () => {
@@ -52,18 +56,12 @@ describe('', () => {
     expect(btnValidete).toBeInTheDocument();
     userEvent.click(btnValidete);
   });
-  test('7-Moedas', async () => { // Ajuda da Bia e Ellen na parte do await waitFor, pois quando a 8 passou a 5 deu problema, me ajudarama complementar
+  test('7-Moedas', async () => { // Ajuda da Bia e Ellen na parte do await waitFor, pois quando a 8 passou a 5 deu problema, me ajudarama complementar, https://testing-library.com/docs/dom-testing-library/api-async/ site apoio
     renderWithRouterAndRedux(<Wallet />);
     const coin = screen.getByTestId('currency-input');
-    const methodExpense = screen.getByTestId('method-input');
-    const tagExpense = screen.getByTestId('tag-input');
     expect(coin).toBeInTheDocument();
-    expect(methodExpense).toBeInTheDocument();
-    expect(tagExpense).toBeInTheDocument();
     await waitFor(() => {
       userEvent.selectOptions(coin, 'USD');
-      userEvent.selectOptions(methodExpense, 'Dinheiro');
-      userEvent.selectOptions(tagExpense, 'Alimentação');
       expect(screen.getByRole('button', { name: 'Adicionar despesa' })).toBeVisible();
     });
   });
