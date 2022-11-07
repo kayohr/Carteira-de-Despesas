@@ -43,10 +43,10 @@ class WalletForm extends Component {
 
   editButton = () => {
     const { expensesEdit, IdToEdit, dispatch } = this.props;
-    console.log(IdToEdit);
+    // console.log(IdToEdit);
     const newEditExpenses = expensesEdit.map((e) => {
       if (e.id === IdToEdit) {
-        console.log(e.id);
+        // console.log(e.id);
         return {
           ...e,
           ...this.state,
@@ -74,7 +74,7 @@ class WalletForm extends Component {
   render() {
     const { value, description, currency,
       method, tag } = this.state;
-    const { currencies, editor, IdToEdit } = this.props;
+    const { currencies, editor } = this.props;
 
     return (
       <div>
@@ -176,7 +176,7 @@ WalletForm.propTypes = {
 
 const mapStateToProps = (store) => ({
   currencies: store.wallet.currencies,
-  IdToEdit: store.wallet.IdToEdit,
+  IdToEdit: store.wallet.idToEdit,
   editor: store.wallet.editor,
   expensesEdit: store.wallet.expenses,
 });
