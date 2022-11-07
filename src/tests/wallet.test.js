@@ -44,13 +44,9 @@ describe('', () => {
     expect(methodPayment).toBeInTheDocument();
     const expenseCategory = screen.getByTestId('tag-input');
     expect(expenseCategory).toBeInTheDocument();
-    const coin = screen.getByTestId('currency-input');
-    expect(coin).toBeInTheDocument();
     await waitFor(() => {
       userEvent.selectOptions(methodPayment, 'Dinheiro');
       userEvent.selectOptions(expenseCategory, 'Alimentação');
-      userEvent.selectOptions(coin, 'USD');
-      expect(screen.getByRole('button', { name: 'Adicionar despesa' })).toBeVisible();
     });
   });
 
@@ -64,7 +60,12 @@ describe('', () => {
     renderWithRouterAndRedux(<Wallet />);
     const coin = screen.getByTestId('currency-input');
     expect(coin).toBeInTheDocument();
+    const methodPayment = screen.getByTestId('method-input');
+    expect(methodPayment).toBeInTheDocument();
+    const expenseCategory = screen.getByTestId('tag-input');
     await waitFor(() => {
+      userEvent.selectOptions(methodPayment, 'Dinheiro');
+      userEvent.selectOptions(expenseCategory, 'Alimentação');
       userEvent.selectOptions(coin, 'USD');
       expect(screen.getByRole('button', { name: 'Adicionar despesa' })).toBeVisible();
     });
