@@ -42,33 +42,43 @@ class Login extends React.Component {
   render() {
     const { buttonDisable } = this.state;
     return (
-      <form
-        onSubmit={ this.submitLogin }
-      >
-        Login
-        <input
-          placeholder="Digite o seu email aqui"
-          data-testid="email-input"
-          name="email"
-          type="text"
-          onChange={ this.handleChange }
-        />
+      <div className="fundo">
 
-        <input
-          data-testid="password-input"
-          name="password"
-          type="password"
-          placeholder="Digite o seu password aqui"
-          onChange={ this.handleChange }
-        />
-
-        <button
-          type="submit"
-          disabled={ buttonDisable }
+        {/* <div className="login"> */}
+        <form
+          className="login imagem"
+          onSubmit={ this.submitLogin }
         >
-          Entrar
-        </button>
-      </form>
+          {/* Login */}
+          <input
+            className="fonte"
+            placeholder="Digite o seu email aqui"
+            data-testid="email-input"
+            name="email"
+            type="text"
+            onChange={ this.handleChange }
+          />
+
+          <input
+            className="fonte"
+            data-testid="password-input"
+            name="password"
+            type="password"
+            placeholder="Digite o seu password aqui"
+            onChange={ this.handleChange }
+          />
+
+          <button
+            className="fonte"
+            type="submit"
+            disabled={ buttonDisable }
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
+      // </div>
+
     );
   }
 }

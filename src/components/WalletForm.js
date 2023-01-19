@@ -77,7 +77,7 @@ class WalletForm extends Component {
     const { currencies, editor } = this.props;
 
     return (
-      <div>
+      <div className="test2">
         <input
           data-testid="value-input"
           placeholder="Adicionar despesa"

@@ -30,7 +30,7 @@ class Table extends Component {
     const { expenses } = this.props;
     // console.log(espenses);
     return (
-      <table>
+      <table className="test3">
         <thead>
           <tr>
             <th>Descrição</th>
@@ -45,7 +45,7 @@ class Table extends Component {
           </tr>
         </thead>
         {/* https://edrodrigues.com.br/blog/criando-tabelas-com-filtros-%E2%80%8B%E2%80%8Busando-react/ && https://www.youtube.com/watch?v=4liMA_4lubI   Site de apoio */}
-        <tbody>
+        <tbody className="test4">
           {expenses.map((item) => (
             <tr key={ item.id }>
               <td>{item.description}</td>
