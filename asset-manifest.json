@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/app-toot-name/static/css/main.f103ec84.css",
+    "main.js": "/app-toot-name/static/js/main.17f0403a.js",
+    "static/media/img.jpg": "/app-toot-name/static/media/img.51539843eee015c0301d.jpg",
+    "static/media/din.jpeg": "/app-toot-name/static/media/din.f1198e5215db5eda3b1f.jpeg",
+    "index.html": "/app-toot-name/index.html",
+    "main.f103ec84.css.map": "/app-toot-name/static/css/main.f103ec84.css.map",
+    "main.17f0403a.js.map": "/app-toot-name/static/js/main.17f0403a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f103ec84.css",
+    "static/js/main.17f0403a.js"
+  ]
+}
